@@ -63,6 +63,7 @@ module.exports = (options = {}) => {
     },
 
     externals: /^[a-z0-9].*$/,
-    performance: { hints: false }
+    performance: { hints: false },
+    mode: "production",
   }
 }

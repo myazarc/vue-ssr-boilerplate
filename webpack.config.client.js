@@ -94,10 +94,6 @@ module.exports = (options = {}) => {
         template: 'src/index.html'
       }),
 
-      new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'manifest']
-      }),
-
       new webpack.DefinePlugin({
         DEBUG: Boolean(options.dev),
         TARGET: '"web"',
@@ -132,6 +128,7 @@ module.exports = (options = {}) => {
 
     performance: {
       hints: options.dev ? false : 'warning'
-    }
+    },
+    mode: "development",
   }
 }
