@@ -1,13 +1,13 @@
-const { resolve } = require('path')
-const webpack = require('webpack')
-const pkgInfo = require('./package.json')
+const { resolve } = require('path');
+const webpack = require('webpack');
+const pkgInfo = require('./package.json');
 
 module.exports = (options = {}) => {
-  const config = require('./config/' + (process.env.npm_config_config || options.config || 'default'))
+  const config = require('./config/' + (process.env.npm_config_config || options.config || 'default')); // eslint-disable-line
 
   return {
     entry: {
-      server: './src/server-entry'
+      server: './src/server-entry',
     },
 
     target: 'node',
@@ -17,20 +17,20 @@ module.exports = (options = {}) => {
       filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
       chunkFilename: '[id].js?[chunkhash]',
       publicPath: config.publicPath,
-      libraryTarget: 'commonjs2'
+      libraryTarget: 'commonjs2',
     },
 
     module: {
       rules: [
         {
           test: /\.vue$/,
-          use: 'vue-loader'
+          use: 'vue-loader',
         },
 
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
+          use: 'babel-loader',
         },
 
         {
@@ -39,12 +39,12 @@ module.exports = (options = {}) => {
             {
               loader: 'url-loader',
               options: {
-                limit: 10000
-              }
-            }
-          ]
-        }
-      ]
+                limit: 10000,
+              },
+            },
+          ],
+        },
+      ],
     },
 
     plugins: [
@@ -52,18 +52,18 @@ module.exports = (options = {}) => {
         DEBUG: Boolean(options.dev),
         TARGET: '"node"',
         VERSION: JSON.stringify(pkgInfo.version),
-        CONFIG: JSON.stringify(config.runtimeConfig)
-      })
+        CONFIG: JSON.stringify(config.runtimeConfig),
+      }),
     ],
 
     resolve: {
       alias: {
-        '~': resolve(__dirname, 'src')
-      }
+        '~': resolve(__dirname, 'src'),
+      },
     },
 
     externals: /^[a-z0-9].*$/,
     performance: { hints: false },
-    mode: "production",
-  }
-}
+    mode: 'production',
+  };
+};

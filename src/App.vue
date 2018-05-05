@@ -5,20 +5,21 @@
 </template>
 
 <script>
-import './registerGlobals'
-import Vue from 'vue'
-import router from './router'
-import store from './store'
-import Meta from 'vue-meta'
+import Vue from 'vue';
+import Meta from 'vue-meta';
+import router from './router';
+import store from './store';
+import './registerGlobals';
 
-Vue.use(Meta)
+
+Vue.use(Meta);
 
 export default {
   router,
   store,
   metaInfo: {
     title: 'Default Title',
-    titleTemplate: '%s - Company Name'
-  }
-}
+    titleTemplate: '%s - Company Name',
+  },
+};
 </script>

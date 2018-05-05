@@ -15,7 +15,7 @@
 </style>
 
 <script>
-import config from '~/config'
+import config from '~/config';
 
 export default {
   data() {
@@ -23,33 +23,33 @@ export default {
       title: '',
       description: '',
       id: 0,
-      config: null
-    }
+      config: null,
+    };
   },
 
   metaInfo() {
     return {
       title: this.title,
       meta: [
-        { vmid: 'description', name: 'description', content: this.description }
-      ]
-    }
+        { vmid: 'description', name: 'description', content: this.description },
+      ],
+    };
   },
 
   prefetch(route, store) {
     return Promise.all([
-      new Promise(resolve => {
+      new Promise((resolve) => {
         setTimeout(() => {
           resolve({
             title: 'title async loaded',
             description: 'description async loaded',
-            id: route.params.id
-          })
-        })
+            id: route.params.id,
+          });
+        });
       }),
 
-      store.dispatch('asyncIncrement')
-    ]).then(([componentData]) => componentData)
+      store.dispatch('asyncIncrement'),
+    ]).then(([componentData]) => componentData);
   },
 
   // won't run on server side
@@ -59,9 +59,10 @@ export default {
     /*
     can not be defined in data(),
     because the TARGET is different between server side (TARGET: node) and client side (TARGET: web)
-    and this will cause the client-side rendered virtual DOM tree not matching server-rendered content
+    and this will cause the client-side rendered virtual DOM tree not matching server-rendered
+    content
     */
-    this.config = JSON.stringify(config, null, 2)
-  }
-}
+    this.config = JSON.stringify(config, null, 2);
+  },
+};
 </script>

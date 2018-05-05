@@ -1,1 +1,1 @@
-export default CONFIG
+export default CONFIG;

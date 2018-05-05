@@ -12,21 +12,21 @@
 export default {
   data() {
     return {
-      a: 0
-    }
+      a: 0,
+    };
   },
 
   metaInfo: {
     title: 'Vue SSR Boilerplate',
     meta: [
-      { vmid: 'description', name: 'description', content: 'Vue SSR Boilerplate' }
-    ]
+      { vmid: 'description', name: 'description', content: 'Vue SSR Boilerplate' },
+    ],
   },
 
   prefetch() {
     return Promise.resolve({
-      a: 123
-    })
+      a: 123,
+    });
   },
 
   // will be called on server side. check your console
@@ -37,6 +37,6 @@ export default {
   // won't run on server side
   beforeMount() {
     console.log(this.a) //eslint-disable-line
-  }
-}
+  },
+};
 </script>
